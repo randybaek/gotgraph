@@ -11,11 +11,14 @@
   <script src="@routes.Assets.versioned("javascripts/d3.min.js")"></script>
   <script src="@routes.Assets.versioned("javascripts/d3v4-brush-lite.js")" type="text/javascript"></script>
     <script src="@routes.Assets.versioned("javascripts/d3v4-selectable-force-directed-graph.js")" type="text/javascript"></script>
+  @*<div id="myID" data="/assets/data/miserables.with-ids.json"></div>*@
 
   <script>
           var svg = d3.select('#d3_selectable_force_directed_graph');
 
-          d3.json(@routes.Assets.versioned("miserables.with-ids.json"), function(error, graph) {
+          file = d3.select("#myID").attr("data");
+
+          d3.json("/assets/data/miserables.with-ids.json", function(error, graph) {
             if (!error) {
               //console.log('graph', graph);
               createV4SelectableForceDirectedGraph(svg, graph);
