@@ -1,0 +1,27 @@
+@()
+
+@main("Welcome to Play") {
+  <h1>Welcome to Play!</h1>
+  <div align='center' id="d3_selectable_force_directed_graph" style="width: 960px; height: 500px; margin: auto; margin-bottom: 12px">
+    <svg />
+  </div>
+
+
+    <link rel='stylesheet' href="@routes.Assets.versioned("stylesheets/d3v4-selectable-zoomable-force-directed-graph.css")">
+  <script src="@routes.Assets.versioned("javascripts/d3.min.js")"></script>
+  <script src="@routes.Assets.versioned("javascripts/d3v4-brush-lite.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/d3v4-selectable-force-directed-graph.js")" type="text/javascript"></script>
+
+  <script>
+          var svg = d3.select('#d3_selectable_force_directed_graph');
+
+          d3.json(@routes.Assets.versioned("miserables.with-ids.json"), function(error, graph) {
+            if (!error) {
+              //console.log('graph', graph);
+              createV4SelectableForceDirectedGraph(svg, graph);
+            } else {
+              console.error(error);
+            }
+          });
+  </script>
+}
