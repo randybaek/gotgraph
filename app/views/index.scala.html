@@ -16,11 +16,15 @@
   <script>
           var svg = d3.select('#d3_selectable_force_directed_graph');
 
-          file = d3.select("#myID").attr("data");
+//          file = d3.select("#myID").attr("data");
 
-          d3.json("/assets/data/miserables.with-ids.json", function(error, graph) {
+          d3.json("/assets/data/got.json", function(error, graph) {
             if (!error) {
               //console.log('graph', graph);
+//                https://stackoverflow.com/questions/13861657/automatic-zoom-on-object-in-d3-force-layout
+//                        http://jsfiddle.net/spw1016/30muk3ym/
+//                                http://jsfiddle.net/23dLaeLa/31/
+//                                        http://jsfiddle.net/wRXsK/10/
               createV4SelectableForceDirectedGraph(svg, graph);
             } else {
               console.error(error);
